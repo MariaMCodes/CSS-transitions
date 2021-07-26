@@ -1,0 +1,94 @@
+/* All you need to know about CSS Transitions */
+/* Applying Transitions */
+.element {
+  height: 100px;
+  -webkit-transition: height 2s linear;
+  transition: height 2s linear;
+  background: brown;
+}
+
+.element:hover {
+  height: 200px;
+}
+
+/* 
+- Notice we're specifying the property name, the length of transition, and one of the default timing functions, linear. 
+- When the :hover pseudo-class is activated, the height will be transitioned linearly from 100px to 200px over a period of 2 seconds. 
+- duration is the only required item in the transition shorthand. The browser defaults to a timing function of ease, and a property of all, unless these are provided.
+*/
+/* We don't want to be restricted to using psuedo-classes when it comes to activating transitions - clearly that's not very flexible. The solution is to programmatically add and remove classes*/
+/* Transitioning gradients */
+/* adding a transparency to the gradient, and then transitioning between background colors.  */
+.panel {
+  border: 1px solid red;
+  width: 100px;
+  height: 100px;
+  background-color: #000;
+  background-image: -webkit-linear-gradient(rgba(255, 255, 0, 0.4), #FAFAFA);
+  -webkit-transition: background-color 400ms ease;
+}
+
+.panel:hover {
+  background-color: #DDD;
+}
+
+/* create two elements, one overlaid on top of the other, and transition their opacity */
+.element2 {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  background: -webkit-linear-gradient(#C7D3DC, #5B798E);
+}
+
+.element2 .inner {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: -webkit-linear-gradient(#DDD, #FAFAFA);
+  opacity: 0;
+  -webkit-transition: opacity 1s linear;
+}
+
+.element2:hover .inner {
+  opacity: 1;
+}
+
+/* Clipping */
+/* In the example below, you can see a search box with two transition states. The second expanded state is hidden by a clipping element. To transition to the expanded width, all we need to is translate the X axis left. The key thing here is that we're using translate3d rather than altering the element's width. */
+body {
+  margin: 100px;
+}
+
+.clipped {
+  position: relative;
+  width: 154px;
+}
+
+.clipped .clip {
+  position: absolute;
+  right: 0px;
+  width: 50px;
+  height: 25px;
+  border: 2px solid #CCC;
+  border-radius: 0 4px 4px 0;
+  border-left: 0px;
+  pointer-events: none;
+}
+
+input {
+  -webkit-transition: -webkit-transform 400ms ease;
+  border: 2px solid #CCC;
+  border-radius: 4px;
+  border-right: 0px;
+  height: 25px;
+  width: 150px;
+}
+
+input:focus {
+  -webkit-transform: translate3d(-40px, 0, 0);
+  outline: none;
+}
+/*# sourceMappingURL=styles.css.map */
